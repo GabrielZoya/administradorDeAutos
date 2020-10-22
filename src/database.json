@@ -1,18 +1,18 @@
 {
   "automoviles": [
     {
-      "id": "ACM456",
-      "marca": "nissan",
-      "modelo": "c4",
-      "color": "rojo",
+      "id": "a03df3b6-1956-43f9-9845-f18f364f2790",
+      "marca": "Fiat",
+      "modelo": "Fitito",
+      "color": "Mostaza",
       "patente": "ACM456"
     },
     {
-      "id": "RvyMvUw",
-      "marca": "",
-      "modelo": "",
-      "color": "",
-      "patente": ""
+      "id": "a831473b-4b7d-4fd2-a7c9-d7df6595a39d",
+      "marca": "fiat 3",
+      "modelo": "fitito super",
+      "color": "Mostaza 2",
+      "patente": "ACM890"
     }
   ]
 }

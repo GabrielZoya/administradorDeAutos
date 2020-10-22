@@ -11,8 +11,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./Listado.css";
+import { v4 as uuidv4 } from "uuid";
 
 const Listado = () => {
+  // STATES
   const [autos, setAutos] = useState([]);
   const [agregar, setAgregar] = useState(false);
   const [autosForm, setAutosForm] = useState({
@@ -27,6 +29,9 @@ const Listado = () => {
     id: "",
   });
   const [editarTexto, setEditarTexto] = useState("");
+  const [validado, setValidado] = useState(false);
+
+  // FUNCIONES
 
   const traerAutomoviles = async () => {
     const response = await fetch("http://localhost:3001/automoviles");
@@ -36,13 +41,19 @@ const Listado = () => {
   };
 
   const agregarAuto = async (e) => {
-    const data = { id: autosForm.patente, ...autosForm };
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+    setValidado(true);
+    const data = { id: uuidv4(), ...autosForm };
     const response = await fetch("http://localhost:3001/automoviles", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-    console.log(await response);
     await traerAutomoviles();
   };
 
@@ -54,13 +65,10 @@ const Listado = () => {
     setEditarTexto(e.target.value);
   };
 
-  const eliminarAuto = async (patente) => {
-    const response = await fetch(
-      `http://localhost:3001/automoviles/${patente}`,
-      {
-        method: "DELETE",
-      }
-    );
+  const eliminarAuto = async (id) => {
+    const response = await fetch(`http://localhost:3001/automoviles/${id}`, {
+      method: "DELETE",
+    });
     await traerAutomoviles();
   };
 
@@ -90,7 +98,7 @@ const Listado = () => {
     <div>
       <Container>
         <Row>
-          {autos ? (
+          {autos !== [] ? (
             <Table striped bordered hover>
               <thead>
                 <tr>
@@ -104,11 +112,11 @@ const Listado = () => {
               <tbody>
                 {autos.map((auto) => {
                   return (
-                    <Fragment key={auto.patente}>
+                    <Fragment key={auto.id}>
                       <tr>
                         <td
                           onClick={() => {
-                            eliminarAuto(auto.patente);
+                            eliminarAuto(auto.id);
                           }}
                         >
                           {" "}
@@ -188,9 +196,10 @@ const Listado = () => {
         <Row>
           <Col lg={12}>
             {agregar ? (
-              <Form onSubmit={agregarAuto}>
+              <Form noValidate validated={validado} onSubmit={agregarAuto}>
                 <Form.Group controlId="formMarca">
                   <Form.Control
+                    required
                     onChange={handleChange("marca")}
                     type="input"
                     placeholder="Marca"
@@ -200,6 +209,7 @@ const Listado = () => {
 
                 <Form.Group controlId="formModelo">
                   <Form.Control
+                    required
                     onChange={handleChange("modelo")}
                     type="input"
                     placeholder="Modelo"
@@ -209,6 +219,7 @@ const Listado = () => {
 
                 <Form.Group controlId="formColor">
                   <Form.Control
+                    required
                     onChange={handleChange("color")}
                     type="input"
                     placeholder="Color"
@@ -218,6 +229,7 @@ const Listado = () => {
 
                 <Form.Group controlId="formPatente">
                   <Form.Control
+                    required
                     onChange={handleChange("patente")}
                     type="input"
                     placeholder="Patente"
@@ -242,7 +254,7 @@ const Listado = () => {
           <Form.Control
             onChange={handleChangeEditar}
             type="input"
-            placeholder="Enter email"
+            placeholder={editar.tipo}
           />
         </Modal.Body>
         <Modal.Footer>
