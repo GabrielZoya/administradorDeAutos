@@ -1,0 +1,18 @@
+{
+  "automoviles": [
+    {
+      "id": "ACM456",
+      "marca": "nissan",
+      "modelo": "c4",
+      "color": "rojo",
+      "patente": "ACM456"
+    },
+    {
+      "id": "RvyMvUw",
+      "marca": "",
+      "modelo": "",
+      "color": "",
+      "patente": ""
+    }
+  ]
+}
