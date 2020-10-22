@@ -1,0 +1,9 @@
+.agregar {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.container-boton {
+  display: grid;
+  place-items: center;
+}
