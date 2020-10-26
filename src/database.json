@@ -1,18 +1,18 @@
 {
   "automoviles": [
     {
-      "id": "a03df3b6-1956-43f9-9845-f18f364f2790",
+      "id": "a7e21503-6003-479b-87c0-5b750737d3ba",
       "marca": "Fiat",
-      "modelo": "Fitito",
-      "color": "Mostaza",
-      "patente": "ACM456"
+      "modelo": "Uno",
+      "color": "Rojo",
+      "patente": "ACM788"
     },
     {
-      "id": "a831473b-4b7d-4fd2-a7c9-d7df6595a39d",
-      "marca": "fiat 3",
-      "modelo": "fitito super",
-      "color": "Mostaza 2",
-      "patente": "ACM890"
+      "id": "060b2ba4-6331-4d24-8b16-9598fcbc8b61",
+      "marca": "Renault",
+      "modelo": "Kangoo",
+      "color": "Azul",
+      "patente": "ACM500"
     }
   ]
 }

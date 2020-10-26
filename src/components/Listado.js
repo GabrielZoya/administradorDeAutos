@@ -36,15 +36,14 @@ const Listado = () => {
   const traerAutomoviles = async () => {
     const response = await fetch("http://localhost:3001/automoviles");
     const resData = await response.json();
-    console.log(await resData);
     setAutos(resData);
   };
 
   const agregarAuto = async (e) => {
     const form = e.currentTarget;
+    e.preventDefault();
+    e.stopPropagation();
     if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
       return;
     }
     setValidado(true);
@@ -54,6 +53,7 @@ const Listado = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
+
     await traerAutomoviles();
   };
 
