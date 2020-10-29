@@ -13,6 +13,20 @@
       "modelo": "Kangoo",
       "color": "Azul",
       "patente": "ACM500"
+    },
+    {
+      "id": "57cb199a-287e-45cd-8766-5b4871de5b21",
+      "marca": "Fiat 2",
+      "modelo": "auto romi",
+      "color": "lino 3",
+      "patente": "ACM890"
+    },
+    {
+      "id": "34d1fb41-971b-418b-a0fc-2adcab5422ef",
+      "marca": "Fiat 2",
+      "modelo": "auto romi",
+      "color": "lino 3",
+      "patente": "ACM890"
     }
   ]
 }
