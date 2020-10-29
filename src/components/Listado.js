@@ -11,6 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./Listado.css";
+import Formulario from "./Formulario.js";
 import { v4 as uuidv4 } from "uuid";
 
 const Listado = () => {
@@ -196,51 +197,12 @@ const Listado = () => {
         <Row>
           <Col lg={12}>
             {agregar ? (
-              <Form noValidate validated={validado} onSubmit={agregarAuto}>
-                <Form.Group controlId="formMarca">
-                  <Form.Control
-                    required
-                    onChange={handleChange("marca")}
-                    type="input"
-                    placeholder="Marca"
-                    value={autosForm.marca}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId="formModelo">
-                  <Form.Control
-                    required
-                    onChange={handleChange("modelo")}
-                    type="input"
-                    placeholder="Modelo"
-                    value={autosForm.modelo}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId="formColor">
-                  <Form.Control
-                    required
-                    onChange={handleChange("color")}
-                    type="input"
-                    placeholder="Color"
-                    value={autosForm.color}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId="formPatente">
-                  <Form.Control
-                    required
-                    onChange={handleChange("patente")}
-                    type="input"
-                    placeholder="Patente"
-                    value={autosForm.patente}
-                  />
-                </Form.Group>
-
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
-              </Form>
+              <Formulario
+                validado={validado}
+                onSubmit={agregarAuto}
+                onChange={handleChange}
+                value={autosForm}
+              />
             ) : null}
           </Col>
         </Row>
